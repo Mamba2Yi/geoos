@@ -123,6 +123,9 @@ func TransGeometry(inputGeom matrix.Steric) Geometry {
 	case matrix.Collection:
 		multiType := ""
 		for _, v := range g {
+			if v == nil {
+				continue
+			}
 			if multiType == "" {
 				multiType = TransGeometry(v).GeoJSONType()
 			}
