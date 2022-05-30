@@ -150,6 +150,9 @@ func TransGeometry(inputGeom matrix.Steric) Geometry {
 		case TypePolygon:
 			var coll MultiPolygon
 			for _, v := range g {
+				if v == nil {
+					continue
+				}
 				coll = append(coll, TransGeometry(v).(Polygon))
 			}
 			return coll
